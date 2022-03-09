@@ -22,6 +22,7 @@ import NodeInfo from './NodeInfo'
 import TemplateModule from './TemplateModule'
 import Transfer from './Transfer'
 import Upgrade from './Upgrade'
+import Blog from './components/Blog'
 
 function Main() {
   const { apiState, apiError, keyringState } = useSubstrateState()
@@ -87,6 +88,7 @@ function Main() {
         </Grid>
       </Container>
       <DeveloperConsole />
+      <Blog />
     </div>
   )
 }
