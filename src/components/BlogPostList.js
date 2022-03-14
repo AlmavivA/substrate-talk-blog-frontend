@@ -1,25 +1,28 @@
-import BlogPostItem from "./BlogPostItem";
+import BlogPostItem from "./BlogPostItem"
 import './BlogPostList.css'
 
-const removeDuplicates = (propertyFn, array) => {
-    const set = new Set();
-    return array.filter((elem) => {
-        const key = propertyFn(elem)
-        const isNew = !set.has(key)
-        if (isNew) {
-            set.add(key)
+const removeDuplicates = (array) => {
+    let result = []
+    array.forEach(function (item) {
+        const existing = result.filter((v, i) => v.hash === item.hash);
+        if (existing.length === 0) {
+            result.push(item);
         }
-        return isNew;
     });
+    return result
 }
 
-const BlogPostList = (props) => {
-    const {blogPosts} = props;
-    // if (blogPosts.length === 0) {
-    //     return <h2>No Blog Posts yet</h2>;
-    // }
+let initialData = []
 
-    // const filtered = removeDuplicates(blogPost => blogPost.key, blogPosts)
+const BlogPostList = (props) => {
+    let {blogPosts} = props;
+    if (initialData.length === 0) {
+        initialData = blogPosts
+    } else {
+        initialData.push(...blogPosts)
+        initialData = removeDuplicates(initialData)
+        blogPosts = initialData
+    }
 
     return (
         <ul className="blog-posts-list">
