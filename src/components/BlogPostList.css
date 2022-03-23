@@ -1,4 +1,6 @@
 .blog-posts-list {
     list-style: none;
     padding: 10px;
+    width: 75vw;
+    height: 75vh;
 }

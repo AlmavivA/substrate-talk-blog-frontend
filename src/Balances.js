@@ -18,6 +18,11 @@ export default function Main(props) {
           (acc, address, index) => ({
             ...acc,
             [address]: balances[index].data.free.toHuman(),
+            // [address]: +balances[index]
+            //       .data
+            //       .free
+            //       .toHuman()
+            //       .replace(/,/g, '')/* / 1000000000000*/
           }),
           {}
         )
@@ -75,7 +80,8 @@ export default function Main(props) {
                 <Table.Cell width={3}>
                   {balances &&
                     balances[account.address] &&
-                    balances[account.address]}
+                    +balances[account.address].replace(/,/g, '') / 1000000000000
+                  } GOT
                 </Table.Cell>
               </Table.Row>
             ))}

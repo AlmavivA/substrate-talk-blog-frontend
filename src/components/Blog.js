@@ -4,28 +4,27 @@ import BlogPostList from "./BlogPostList";
 import {useEffect, useState} from "react";
 import {useSubstrateState} from "../substrate-lib";
 
+const FILTERED_EVENTS = [
+    'blog:BlogPostCreated'
+]
 const initialData = []
 
 const Blog = () => {
     const {api} = useSubstrateState()
     const [blogPosts, setBlogPosts] = useState(initialData);
 
-    const onBlogPostAdded = (blogPost) => {
-        if (!blogPosts.includes(blogPost)) {
-            setBlogPosts((previousBlogPosts) => {
-                return [blogPost, ...previousBlogPosts];
-            });
-        }
-    }
-
-    const FILTERED_EVENTS = [
-        'blog:BlogPostCreated'
-    ]
-
     const eventName = ev => `${ev.section}:${ev.method}`
     const eventParams = ev => JSON.stringify(ev.data)
 
     useEffect(() => {
+        const onBlogPostAdded = (blogPost) => {
+            if (!blogPosts.includes(blogPost)) {
+                setBlogPosts((previousBlogPosts) => {
+                    return [blogPost, ...previousBlogPosts];
+                });
+            }
+        }
+
         let unsub = null
         const allEvents = async () => {
             unsub = await api.query.system.events(events => {
@@ -60,7 +59,7 @@ const Blog = () => {
         }
         allEvents()
         return () => unsub && unsub()
-    }, [api.query.system])
+    }, [api.query.system, blogPosts])
 
     return (
         <div className="blog">

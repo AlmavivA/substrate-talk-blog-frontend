@@ -30,9 +30,8 @@ const BlogPostItem = (props) => {
             <div className="card blog-post-item">
                 <div className="blog-post-item__content">Content: {content}</div>
                 <div className="blog-post-item__author">Published by: {author}</div>
-                <div className="blog-post-item__hash">With tx hash: {hash}</div>
+                <div className="blog-post-item__hash">Tx hash: {hash}</div>
                 <div className="align-self-end">
-                    {/*<button type="button" className="btn btn-success blog-post-item__send-tip">Send a tip</button>*/}
                     <TxButton
                         setStatus={onSendTip}
                         disabled={sendTipDisabled}
