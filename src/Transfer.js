@@ -82,8 +82,7 @@ export default function Main(props) {
             attrs={{
               palletRpc: 'balances',
               callable: 'transfer',
-              // inputParams: [addressTo, amount],
-              inputParams: [addressTo, amount * 1000000000000],
+              inputParams: [addressTo, amount],
               paramFields: [true, true],
             }}
           />

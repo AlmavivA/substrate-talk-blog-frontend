@@ -63,7 +63,6 @@ const Blog = () => {
 
     return (
         <div className="blog">
-            {/*<BlogForm onNewBlogPost={onBlogPostAdded}/>*/}
             <div className="d-flex align-items-center justify-content-center">
                 <BlogForm/>
             </div>

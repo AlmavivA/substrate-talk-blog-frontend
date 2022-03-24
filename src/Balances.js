@@ -78,10 +78,7 @@ export default function Main(props) {
                   </CopyToClipboard>
                 </Table.Cell>
                 <Table.Cell width={3}>
-                  {balances &&
-                    balances[account.address] &&
-                    +balances[account.address].replace(/,/g, '') / 1000000000000
-                  } GOT
+                  {balances && balances[account.address]}
                 </Table.Cell>
               </Table.Row>
             ))}

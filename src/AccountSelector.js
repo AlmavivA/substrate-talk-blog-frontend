@@ -131,9 +131,7 @@ function BalanceAnnotation(props) {
   return currentAccount ? (
     <Label pointing="left">
       <Icon name="money" color="green" />
-      {/*{accountBalance} GOT*/}
-      {accountBalance && +accountBalance.replace(/,/g, '') / 1000000000000} GOT
-      {/*{Math.round(+accountBalance.replace(/,/g, '') / 1000000000000)}*/}
+      {accountBalance}
     </Label>
   ) : null
 }
